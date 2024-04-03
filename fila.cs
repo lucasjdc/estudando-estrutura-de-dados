@@ -12,11 +12,15 @@ class Program {
 		minhaFila.Enqueue(20);
 		minhaFila.Enqueue(30);
 
+		// Obtendo o tamanho da fila usando a propriedade Count
+		int tamanho = minhaFila.Count;
+		Console.WriteLine("Tamanho: {0}", tamanho);
+		
 		// Exibindo os elementos da fila
 		Console.WriteLine("Elementos da fila: ");
 		foreach (int item in minhaFila) {
 			Console.WriteLine(item);
-		}
+		}		
 
 		// Removendo o primeiro elemento da fila
 		int primeiroElemento = minhaFila.Dequeue();
