@@ -31,13 +31,7 @@ class Program {
 
 		// Verificando se a fila contém um elemento específico
 		int elementoBuscado = 20;
-		string elementoEncontrado;
-		bool contemElemento = minhaFila.Contains(elementoBuscado);
-		if (contemElemento) {
-			elementoEncontrado = "Sim";
-		} else {
-			elementoEncontrado = "Não";
-		}
+		string elementoEncontrado = minhaFila.Contains(elementoBuscado) ? "Sim" : "Não";		
 		Console.WriteLine("A fila contém o elemento {0}?", elementoBuscado);
 		Console.WriteLine("R: {0}", elementoEncontrado);
 
@@ -48,7 +42,5 @@ class Program {
 		// Limpando a fila
 		minhaFila.Clear();
 		Console.WriteLine("A fila foi limpa.");
-
-		Console.ReadKey();
 	}
 }
