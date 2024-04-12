@@ -47,5 +47,27 @@ class ListaLigada:
     def imprimir(self):
         atual = self.inicio
         for i in range(0, self.quantidade):
-            print(f'- {atual.conteudo}')
+            print(atual.conteudo)
             atual = atual.proximo
+    
+    def remover_do_inicio(self):
+        removido = self.inicio
+        self._inicio = removido.proximo
+        removido.proximo = None
+        self._quantidade -= 1
+        return removido.conteudo
+
+    def remover(self, posicao):
+        if posicao == 0:
+            return self.remover_do_inicio()
+        esquerda = self._celula(posicao - 1)
+        removido = esquerda.proximo
+        esquerda.proximo = removido.proximo
+        removido.proximo = None
+        self._quantidade -= 1
+        return removido.conteudo
+    
+    def item(self, posicao):
+        self._validar_posicao(posicao)
+        celula = self._celula(posicao)
+        return celula.conteudo
