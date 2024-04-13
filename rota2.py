@@ -14,6 +14,11 @@ def main():
     loja3 = Loja("Padaria Pão Quente", "Praça da Árvore")
 
     lista = ListaDuplamenteLigada()
-    print(lista.quantidade)
+    print(f"Quantidade: {lista.quantidade}")
+
+    lista._inserir_em_lista_vazia(loja1)
+
+    print(f"Quantidade: {lista.quantidade}")
+    print(lista.item(0))
 
 main()

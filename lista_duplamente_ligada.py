@@ -37,3 +37,44 @@ class ListaDuplamenteLigada:
     @property
     def quantidade(self):
         return self._quantidade
+    
+    def _inserir_em_lista_vazia(self, conteudo):
+        celula = Celula(conteudo)
+        self._inicio = celula
+        self._fim = celula
+        self._quantidade += 1
+    
+    def item(self, posicao):
+        """
+        Retorna o conteúdo do elemento na posição especificada na lista.
+
+        Args:
+            posicao: A posição do elemento na lista.
+
+        Retorno:
+            O conteúdo do elemento na posição especificada.
+        """
+        celula = self._celula(posicao)
+        return celula.conteudo
+
+    def _validar_posicao(self, posicao):
+        if 0 <= posicao < self.quantidade:
+            return True
+        raise IndexError("Posição inválida: {}".format(posicao))
+    
+    def _celula(self, posicao):
+        """
+        Retorna a célula na posição especificana na lista.
+
+        Args:
+            posicao: A posição da célula na lista.
+
+        Retorno:
+            A célula na posição especificada
+        """
+        self._validar_posicao(posicao)
+        atual = self.inicio
+        for i in range(0, posicao):
+            atual = atual.proximo
+        return atual
+
