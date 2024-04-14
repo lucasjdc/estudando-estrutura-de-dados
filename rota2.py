@@ -8,27 +8,27 @@ class Loja:
     def __repr__(self):
         return "{} - {}".format(self.nome, self.endereco)
     
+def situacao(lista):
+    print(f"Quantidade: {lista.quantidade}")
+    lista.imprimir()
+
 def main():
     loja1 = Loja("Minimercado", "Rua das Flores, 12")
     loja2 = Loja("Hortifruti", "Av das Borboletas, 23")
-    loja3 = Loja("Padaria Pão Quente", "Praça da Árvore")
+    loja3 = Loja("Padaria Pão Quente", "Rua das Árvores, 3")
+    loja4 = Loja("Supermecado", "Rua do Pomar, 23")
+    loja5 = Loja("Mercado", "Rua das Flores, 98")
+    loja6 = Loja("Quitanda", "Rua da Fazenda, 899")
 
     lista = ListaDuplamenteLigada()
-    print(f"Quantidade: {lista.quantidade}")
-
     lista.inserir_no_inicio(loja1)
-
-    print(f"Quantidade: {lista.quantidade}")
-    print(lista.item(0))
-
     lista.inserir_no_inicio(loja2)
-    print(f"Quantidade: {lista.quantidade}")
-    print(lista.item(0))
-
     lista.inserir_no_inicio(loja3)
-    print(f"Quantidade: {lista.quantidade}")    
+    lista.inserir_no_fim(loja4)
+    lista.inserir_no_fim(loja5)
+    lista.inserir_no_fim(loja6)
 
-    lista.imprimir()
+    situacao(lista)
     
 
 

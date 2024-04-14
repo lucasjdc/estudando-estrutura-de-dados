@@ -94,3 +94,12 @@ class ListaDuplamenteLigada:
             print(atual.conteudo)
             atual = atual.proximo
 
+    def inserir_no_fim(self, conteudo):
+        if self.quantidade == 0:
+            return self._inserir_em_lista_vazia(conteudo)
+        celula = Celula(conteudo)
+        celula.anterior = self.fim
+        self.fim.proximo = celula
+        self._fim = celula
+        self._quantidade += 1
+
