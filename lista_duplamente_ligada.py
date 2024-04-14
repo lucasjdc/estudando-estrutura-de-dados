@@ -1,26 +1,10 @@
-class Celula:
-    """
-    Representa um elemento em uma lista duplamente ligada.
-
-    Atributos:
-        conteudo: O conteúdo armazenado na célula
-        proximo: Referência para a próxima célula na lista.
-        anterior: Referência para a célula anterior na lista.
-    """
+class Celula:    
     def __init__(self, conteudo):
         self.conteudo = conteudo
         self.proximo = None
         self.proximo = None
 
-class ListaDuplamenteLigada:
-    """
-    Representa uma lista duplamente ligada.
-
-    Atributos:
-        _inicio: Referência para o primeiro elemento da lista.
-        _fim: Referência para o último elemento da lista.
-        _quantidade: Quantidade de elementos na lista.
-    """
+class ListaDuplamenteLigada:    
     def __init__(self):
         self._inicio = None
         self._fim = None
@@ -54,16 +38,21 @@ class ListaDuplamenteLigada:
         self._quantidade += 1
 
     
-    def item(self, posicao):
-        """
-        Retorna o conteúdo do elemento na posição especificada na lista.
+    def inserir(self, posicao, conteudo):
+        if posicao == 0:
+            return self.inserir_no_inicio(conteudo)
+        if posicao == self.quantidade:
+            return self.inserir_no_fim(conteudo)
+        esquerda = self._celula(posicao-1)
+        direita = esquerda.proximo
+        celula = Celula(conteudo)
+        celula.proximo = direita
+        celula.anterior = esquerda
+        esquerda.proximo = celula
+        direita.anterior = celula
+        self._quantidade += 1
 
-        Args:
-            posicao: A posição do elemento na lista.
-
-        Retorno:
-            O conteúdo do elemento na posição especificada.
-        """
+    def item(self, posicao):        
         celula = self._celula(posicao)
         return celula.conteudo
 
@@ -72,20 +61,17 @@ class ListaDuplamenteLigada:
             return True
         raise IndexError(f"Posição inválida: {posicao}")
     
-    def _celula(self, posicao):
-        """
-        Retorna a célula na posição especificana na lista.
-
-        Args:
-            posicao: A posição da célula na lista.
-
-        Retorno:
-            A célula na posição especificada
-        """
+    def _celula(self, posicao):      
         self._validar_posicao(posicao)
-        atual = self.inicio
-        for i in range(0, posicao):
-            atual = atual.proximo
+        metade = self.quantidade // 2 # // o resultado da divisão é um número inteiro
+        if posicao < metade:
+            atual = self.inicio
+            for i in range(0, posicao):
+                atual = atual.proximo
+            return atual
+        atual = self.fim
+        for i in range(posicao+1, self.quantidade)[::-1]:
+            atual = atual.anterior
         return atual
     
     def imprimir(self):
@@ -103,3 +89,11 @@ class ListaDuplamenteLigada:
         self._fim = celula
         self._quantidade += 1
 
+# range(0, metate)
+# range(metade, quantidade)[::-1]
+# [::-1] reverte o intervalo
+# range(0, posicao)
+# range(posicao+1, quantidade)[::-1]
+# metate = quantidade / 2
+
+    
